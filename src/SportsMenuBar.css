@@ -1,0 +1,26 @@
+.menuBar {
+    border-color: black;
+    border-style: solid ;
+    border-width: 1px;
+    margin: 5px;
+    padding: 5px;
+    font-size: 18px;
+    background-color: rgb(18, 73, 129);
+    color: white;
+    font-family: "Titillium Web", sans-serif;
+}
+
+button {
+    font-size: 18px;
+    background-color: rgb(18, 73, 129);
+    color: white;
+    font-family: "Titillium Web", sans-serif;
+    border-style: none;
+    padding: 2px;
+    margin: 2px;
+    cursor: pointer;
+}
+.eventsCount {
+    color: gray;
+    font-size: 14px;
+}
