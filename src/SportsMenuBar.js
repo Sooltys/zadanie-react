@@ -1,18 +1,19 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
 import './SportsMenuBar.css';
 
 function CompetitionCategory(props) {
+
     return;
 }
 
 class NationCategory extends React.Component {
     render(props) {
         return(
-            <div>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{this.props.categoryId}.&nbsp;
-                {this.props.categoryName}-
-                {this.props.parentCategory}
+            <div className='nation'>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{/* {this.props.categoryId}.&nbsp; */}
+                {this.props.categoryName}
+                <span className='eventsCount'>({this.props.eventsCount})</span>
+                {/* -{this.props.parentCategory} */}
             </div>
         );
     }
@@ -26,11 +27,11 @@ class SportsCategory extends React.Component {
             nations = this.props.nations
         }
         return (
-            <div>
+            <div className='sport'>
                 <img src='./logo192.png' width='18px' alt='logo sportu' />&nbsp;
-                <button onClick={this.props.onClick}>{this.props.categoryId}.&nbsp;
+                <span onClick={this.props.onClick}>{/* {this.props.categoryId}.&nbsp; */}
                 <b>{this.props.categoryName}</b>
-                <span className='eventsCount'>({this.props.eventsCount})</span></button>
+                &nbsp;<span className='eventsCount'>({this.props.eventsCount})</span></span>
                 {nations}
             </div>
         );
@@ -51,7 +52,8 @@ class SportsMenuBar extends React.Component {
             .then((res) => res.json())
             .then((json) => {
                 this.setState({
-                    items: json.data
+                    items: json.data,
+                    competitions: []
                 })
             })
     }
@@ -62,14 +64,13 @@ class SportsMenuBar extends React.Component {
         } else if(this.state.openSport === i ) {
             this.setState( {openSport:0} )
         }
-        
         console.log(i + ' - ' + this.state.openSport);
     }
 
     render(props) {
         let sportsRow = [];
-        let nationRow = [];
-        let competitionRow = [];
+        // let nationRow = [];
+        // let competitionRow = [];
         this.state.items.forEach((element, key) => {
             if(element.level === 1) {
                 let nations = this.state.items.map((item, key) => {
@@ -94,15 +95,15 @@ class SportsMenuBar extends React.Component {
                 );
             } else if(element.level === 2) {
                 //nationRow.push(element);
-                nationRow.push(
-                    <NationCategory
-                        categoryName={element.categoryName}
-                        categoryId={element.categoryId} 
-                        eventsCount={element.eventsCount}
-                        parentCategory={element.parentCategory} />
-                );
+                // nationRow.push(
+                //     <NationCategory
+                //         categoryName={element.categoryName}
+                //         categoryId={element.categoryId} 
+                //         eventsCount={element.eventsCount}
+                //         parentCategory={element.parentCategory} />
+                // );
             } else {
-                competitionRow.push(element);
+                // competitionRow.push(element);
                 // competitionRow.push(
                 //     <SportsCategory
                 //         categoryName={element.categoryName}
